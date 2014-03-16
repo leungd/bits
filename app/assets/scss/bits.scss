@@ -1,0 +1,98 @@
+// VARIABLE.... so alone :(
+$gutter: 15px;
+
+// MEDIA QUERIES
+@mixin break($point) {
+    @if $point == sml {
+        @content;
+    }
+    @else if $point == med {
+        @media (min-width: 769px) { @content; }
+    }
+}
+
+// BOX-SIZING
+@mixin box-sizing {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+// CLEARFIXING
+@mixin clear {
+    clear: both;
+    *zoom: 1;
+    &:before, &:after {  
+        display: table;
+        content: "";
+        line-height: 0;
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+// THE CONTAINER - Holds all them bits
+
+@mixin container($max-width:60em) {
+
+    @include clear;
+    @include box-sizing;
+
+    margin: 0 auto;
+    padding: $gutter;
+    max-width: $max-width;
+
+}
+
+// THE GRID - Core row element
+@mixin grid($nest:false) {
+
+    @include clear;
+    @include box-sizing;
+
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 0px;
+    padding-left: 0px;
+    
+
+    // Fix gutters for nested grids
+    @if $nest == true   {
+        margin-left: -$gutter*2;
+        margin-right: -$gutter*2;
+        padding-left: $gutter;
+        padding-right: $gutter;
+    }
+
+}
+
+// THE BITS - Core bit elements and sizing
+@mixin bit($size:whole) {
+
+    @include box-sizing;
+
+    float: left;
+    padding-left: $gutter;
+    padding-right: $gutter;
+    
+    // Collapses grid to full-width bits under 768px
+    @include break(sml) { width: 100%; }
+
+    // Bit widths for anything over 768px
+    @include break(med) {
+        @if $size == whole                  { width: 100%; } 
+        @else if $size == half              { width: 50%; } 
+        @else if $size == one-third         { width: 33.33333%; } 
+        @else if $size == two-thirds        { width: 66.66667%; } 
+        @else if $size == one-quarter       { width: 25%; } 
+        @else if $size == three-quarters    { width: 75%; } 
+        @else if $size == one-fifth         { width: 20%; } 
+        @else if $size == two-fifths        { width: 40%; } 
+        @else if $size == three-fifths      { width: 60%; } 
+        @else if $size == four-fifths       { width: 80%; }
+        @else                               { width: 100%; }
+    }
+
+}

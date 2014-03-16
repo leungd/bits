@@ -1,0 +1,129 @@
+	
+	@import url(//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.0/normalize.css);
+	@import 'fonts';
+	@import 'bits';
+
+	$code-bg: #EAEAEA;
+	$code: #666;
+	$code-include: #ED834E;
+	$code-variable: lighten($code-include, 15%);
+
+/*  ==========================================================================
+	Typography
+    ========================================================================== */
+
+	h1, h2, h3, h4, h5, h6 {
+		color: #333;
+		font-family: 'Source Sans Pro', sans-serif;
+	}
+
+	body, p {
+		line-height: 1.6em;
+		color:#444;
+	}
+
+	p {
+		font-size: 1.2em;
+	}
+
+/*  ==========================================================================
+	Links
+    ========================================================================== */
+
+	a {
+		text-decoration: none;
+	}
+
+	.btn {
+		display: inline-block;
+		padding: 15px 20px;
+		border-radius: 3px;
+		background-color: #ED834E;
+		color: #FFF;
+		font-size: 14px;
+		-webkit-transition: all .25s ease-in-out;
+		-moz-transition: all .25s ease-in-out;
+		transition: all .25s ease-in-out;
+	}
+	.btn:hover {
+		background-color: lighten(#ED834E, 10%);
+		-webkit-transition: all .25s ease-in-out;
+		-moz-transition: all .25s ease-in-out;
+		transition: all .25s ease-in-out;
+	}
+
+/*  ==========================================================================
+	Structure
+    ========================================================================== */
+
+	.container { 
+
+		// Container Include
+		@include container(60em); 
+
+		.grid {
+			
+			// Grid Include
+			@include grid;
+
+			// Bit Includes
+			.bit.whole 				{ @include bit(whole); }
+			.bit.half 				{ @include bit(half); }
+			.bit.one-third 			{ @include bit(one-third); }
+			.bit.two-thirds 		{ @include bit(two-thirds); }
+			.bit.one-quarter 		{ @include bit(one-quarter); }
+			.bit.three-quarters 	{ @include bit(three-quarters); }
+			.bit.one-fifth 			{ @include bit(one-fifth); }
+			.bit.two-fifths 		{ @include bit(two-fifths); }
+			.bit.three-fifths 		{ @include bit(three-fifths); }
+			.bit.four-fifths 		{ @include bit(four-fifths); }
+
+			.bit {
+				.grid {
+					@include grid($nest:true);
+				}
+			}
+
+			// Demo Styles
+			.title { 
+				font-size: 3em;
+			}
+			.sub-title {
+				margin: 0px 0px 20px 0px;
+				color: #999;
+				font-weight: 300;
+				font-style: italic; 
+				font-size: 1.6em;
+			}
+
+			.bit.demo {
+				-webkit-transition: all .2s ease-in-out;
+				-moz-transition: all .2s ease-in-out;
+				transition: all .2s ease-in-out;
+				pre {
+					display: block;
+					margin: 10px 0;
+					padding: 20px;
+					border-radius: 3px;
+					background-color: $code-bg;
+					color: $code;
+					font-size: 0.875em;
+					-webkit-transition: all .2s ease-in-out;
+					-moz-transition: all .2s ease-in-out;
+					transition: all .2s ease-in-out;
+					.include { color: $code-include; font-weight: 700; }
+					.variable { color: $code-variable; }
+				}
+			}
+
+		}
+
+	}
+
+	// @media only screen and (min-width: 71.250em) {
+
+	// 	.container {
+	// 		@include container(71.250em)
+	// 	}
+
+	// }
