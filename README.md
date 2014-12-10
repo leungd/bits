@@ -2,6 +2,8 @@ Bits
 ====
 ### A simple SASS-based grid.
 
+####[View Demo](http://derekleung.ca/bits/)
+
 Bits is a SASS-based grid aimed to be as lightweight and simple as possible. The idea behind Bits was my own solution for smaller projects (I prefer SASS as my preprocesser) that don't require a full-fledged framework such as Foundation or Bootstrap.
 
 Bits is fully responsive and collapses into a mobile full-width column layout at 768px. Feel free to modify the source to adjust to your own needs.
